@@ -1,20 +1,13 @@
 require("dotenv").config();
 const express = require("express");
-const sqlite3 = require("sqlite3").verbose();
-
+const Database = require("better-sqlite3");
 const app = express();
 
 const axios = require("axios");
 
-const db = new sqlite3.Database("./database.db", (err) => {
+const db = new Database("database.db");
 
-    if (err) {
-        console.log(err.message);
-    } else {
-        console.log("Connected to SQLite database");
-    }
-
-});
+console.log("Connected to SQLite database");
 
 db.run(`
     CREATE TABLE IF NOT EXISTS users (
