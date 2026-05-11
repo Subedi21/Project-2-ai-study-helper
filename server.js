@@ -1,15 +1,16 @@
 require("dotenv").config();
+
 const express = require("express");
 const Database = require("better-sqlite3");
-const app = express();
-
 const axios = require("axios");
+
+const app = express();
 
 const db = new Database("database.db");
 
 console.log("Connected to SQLite database");
 
-db.run(`
+db.exec(`
     CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         username TEXT,
@@ -56,18 +57,23 @@ app.post("/signup", (req, res) => {
         VALUES (?, ?, ?)
     `;
 
-    db.run(sql, [username, email, password], function(err) {
+    try {
 
-        if (err) {
-            console.log(err.message);
-            return res.send("Error creating account");
-        }
+        const statement = db.prepare(sql);
+
+        statement.run(username, email, password);
 
         console.log("User added to database");
 
         res.send("Signup Successful");
 
-    });
+    } catch (err) {
+
+        console.log(err.message);
+
+        res.send("Error creating account");
+
+    }
 
 });
 
@@ -83,12 +89,11 @@ app.post("/login", (req, res) => {
         SELECT * FROM users WHERE email = ?
     `;
 
-    db.get(sql, [email], (err, user) => {
+    try {
 
-        if (err) {
-            console.log(err.message);
-            return res.send("Database error");
-        }
+        const statement = db.prepare(sql);
+
+        const user = statement.get(email);
 
         if (!user) {
             return res.send("User not found");
@@ -100,9 +105,19 @@ app.post("/login", (req, res) => {
 
         res.redirect("/dashboard");
 
-    });
+    } catch (err) {
+
+        console.log(err.message);
+
+        res.send("Database error");
+
+    }
 
 });
+
+
+
+// AI ROUTE
 
 app.post("/ask-ai", async (req, res) => {
 
@@ -129,12 +144,33 @@ app.post("/ask-ai", async (req, res) => {
             response.data.candidates[0].content.parts[0].text;
 
         res.send(`
-            <h1>AI Response</h1>
-            <p>${aiResponse}</p>
+            <html>
+            <head>
+                <link rel="stylesheet" href="/css/style.css">
+            </head>
 
-            <br>
+            <body class="dashboard-page">
 
-            <a href="/dashboard">Ask Another Question</a>
+                <div class="container">
+
+                    <div class="card">
+
+                        <h1>AI Response</h1>
+
+                        <p>${aiResponse}</p>
+
+                        <br>
+
+                        <a class="btn" href="/dashboard">
+                            Ask Another Question
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </body>
+            </html>
         `);
 
     } catch (error) {
@@ -146,6 +182,7 @@ app.post("/ask-ai", async (req, res) => {
     }
 
 });
+
 
 
 const PORT = process.env.PORT || 3000;
