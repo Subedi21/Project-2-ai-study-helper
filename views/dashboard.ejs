@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="dashboard-page">
+
+    <div class="navbar">
+        <h2>AI Study Helper</h2>
+
+        <div>
+            <a href="/">Home</a>
+            <a href="/login">Logout</a>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h1>Study Dashboard</h1>
+
+            <p>
+                Ask Gemini AI any study question and get help instantly.
+            </p>
+
+            <form class="form-box" action="/ask-ai" method="POST">
+
+                <textarea
+                    name="question"
+                    placeholder="Ask a question..."
+                    required
+                ></textarea>
+
+                <button class="btn" type="submit">
+                    Ask AI
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+<body class="dashboard-page">
+
+</html>
