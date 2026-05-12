@@ -102,5 +102,5 @@ https://github.com/Subedi21/Project-2-ai-study-helper.git
 
 # Test Login
 
-Email: test@test.com
+Email: test@gmail.com
 Password: Test123
