@@ -1,4 +1,4 @@
-# AI Tutoring Study Helper + Quizer
+# AI Tutoring Study Helper + Quizer By Lochaan Subedi | BCS377
 
 This project is a full stack AI tutoring/study helper web app where users can create an account, login, ask study questions, and get responses back using Google Gemini AI. I wanted to make something that felt more like a study tool instead of just a basic chatbot, so I also added a quiz me section where the AI can generate quiz questions based on topics the user was studying and grade the answers after.
 
