@@ -1,22 +1,17 @@
-# AI Study Helper
+# AI Tutoring Study Helper By Lochana Subedi BCS377
 
 ## Project Description
 
-This project is a full stack AI study helper web app that lets users create an account, login, and ask study questions using Google Gemini AI. The AI gives responses back to help explain topics and answer questions. I made this project using the technologies we learned throughout the semester like Node.js, Express.js, APIs, EJS, and databases.
-
+This project is a full stack AI Tutoring Study Helper web app where users can create an account, login, and ask study questions using Google Gemini AI. The AI gives responses back to help explain concepts, answer questions, and help users study. I made this project using the technologies we learned throughout the semester like Node.js, Express.js, APIs, EJS, frontend design, and databases.
 ---
 
 # Technologies Used
 
 ## Frontend
-- HTML
-- CSS
-- JavaScript
-- EJS
+- HTML | CSS | JavaScript | EJS
 
 ## Backend
-- Node.js
-- Express.js
+- Node.js | Express.js
 
 ## Database
 - SQLite
@@ -34,14 +29,7 @@ This project is a full stack AI study helper web app that lets users create an a
 
 # Features
 
-- Signup page
-- Login page
-- AI dashboard
-- Gemini AI integration
-- SQLite database
-- User authentication
-- Styled frontend with custom backgrounds and colors
-- Online deployment using Render
+Signup page | Login page | AI dashboard | Gemini AI integration | SQLite database | User authentication | Styled frontend with custom backgrounds and colors | Online deployment using Render
 
 ---
 
